@@ -1,0 +1,124 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ExperimentTemplate {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        // === Experiment Specific Code Starts Here ===
+
+        // Q1: Amazon
+        driver.get("https://www.amazon.in");
+        WebElement signIn = driver.findElement(By.id("nav-link-accountList"));
+        signIn.click();
+
+        // Q2: Flipkart
+        driver.get("https://www.flipkart.com");
+        WebElement closeLogin = driver.findElement(By.xpath("//button[contains(text(),'X')]"));
+        closeLogin.click();
+        WebElement search = driver.findElement(By.name("q"));
+        search.sendKeys("laptop");
+        search.submit();
+
+        // Q3: Inventory
+        java.util.ArrayList<String> inventory = new java.util.ArrayList<>();
+        inventory.add("Item1");
+        inventory.remove("Item1");
+        System.out.println(inventory.size());
+
+        // Q4: Student Mgmt
+        class Student {
+            String name;
+            Student(String name) { this.name = name; }
+        }
+        Student s = new Student("Alice");
+        System.out.println(s.name);
+
+        // Q5: Book Shop
+        class Book {
+            String title;
+            Book(String t) { title = t; }
+        }
+        Book b = new Book("Java");
+        System.out.println(b.title);
+
+        // Q6: Gmail
+        driver.get("https://accounts.google.com");
+        WebElement email = driver.findElement(By.id("identifierId"));
+        email.sendKeys("test@gmail.com");
+        driver.findElement(By.id("identifierNext")).click();
+
+        // Q7: Calculator
+        int a = 5, bVal = 3;
+        System.out.println("Sum=" + (a + bVal));
+
+        // Q8: Recharge
+        int balance = 100;
+        balance += 50;
+        System.out.println(balance);
+
+        // Q9: Bank
+        int deposit = 1000;
+        int withdraw = 200;
+        System.out.println(deposit - withdraw);
+
+        // Q10: RedBus
+        driver.get("https://www.redbus.in");
+        driver.findElement(By.id("src")).sendKeys("Chennai");
+        driver.findElement(By.id("dest")).sendKeys("Bangalore");
+
+        // Q11: OpenCart
+        driver.get("https://www.opencart.com");
+        driver.findElement(By.linkText("Login")).click();
+
+        // Q12: Spotify
+        driver.get("https://www.spotify.com");
+        driver.findElement(By.linkText("Log in")).click();
+
+        // Q13: Login
+        driver.get("https://example.com/login");
+        driver.findElement(By.id("username")).sendKeys("admin");
+        driver.findElement(By.id("password")).sendKeys("123");
+
+        // Q14: Register
+        driver.get("https://example.com/register");
+        driver.findElement(By.id("name")).sendKeys("Alice");
+        driver.findElement(By.id("email")).sendKeys("alice@email.com");
+
+        // Q15: UI Test
+        WebElement btn = driver.findElement(By.id("submit"));
+        System.out.println(btn.isDisplayed());
+
+        // Q16: Dropdown
+        Select drop = new Select(driver.findElement(By.id("country")));
+        drop.selectByVisibleText("India");
+        driver.findElement(By.id("male")).click();
+
+        // Q17: Form Submit
+        driver.findElement(By.id("fname")).sendKeys("Alice");
+        driver.findElement(By.id("submit")).click();
+
+        // Q18: Mobile App
+        String u = "user", p = "pass";
+        System.out.println(u + "/" + p);
+
+        // Q19: Auto Test UI
+        if (driver.getTitle().contains("Login")) {
+            System.out.println("Test Passed");
+        }
+
+        // Q20: Google Search
+        driver.get("https://www.google.com");
+        driver.findElement(By.name("q")).sendKeys("Java");
+        driver.findElement(By.name("q")).submit();
+
+        // === Experiment Specific Code Ends Here ===
+
+        driver.quit();
+    }
+}
